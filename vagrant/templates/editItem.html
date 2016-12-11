@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container-fluid">
+<h1>Edit Item</h1>
+<form method="post">
+    <label>Title</label>
+    <br/>
+    <input type="text" name="name" placeholder="Name" value="{{item.name}}">
+    <br/>
+    <br/>
+    <label>Description</label>
+    <br/>
+    <textarea name="description" placeholder="Description">{{item.description}}</textarea>
+    <br/>
+    <input type="submit">
+</form>
+<a href="{{url_for('catalog')}}">Cancel</a>
+</div>
+{% endblock content %}

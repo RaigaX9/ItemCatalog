@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% block content %}
+{% if item is not none %}
+<script>
+function deleteItem() {
+    $.post('{{url_for('deleteItem', category_id=item.category_id, item_id=item.id)}}', function(data) {
+        window.location.href = '/';
+    });
+}
+</script>
+<div class="container-fluid">
+    <h1>{{item.name}}</h1>
+    {{item.description}}
+    {% if user == item.user_id %}
+    <br/>
+    <br/>
+    <a href="{{url_for('editItem', category_id=item.category_id, item_id=item.id)}}">Edit</a>
+    <a href="#" onclick="deleteItem();">Delete</a>
+</div>
+{% endif %}
+{% else %}
+Empty item
+{% endif %}
+{% endblock content %}

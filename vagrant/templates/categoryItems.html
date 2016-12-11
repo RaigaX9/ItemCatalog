@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block title %}{{category.name}}{% endblock title %}
+{% block content %}
+{% if category is not none %}
+<div class="container-fluid">
+    <h1>{{category.name}} </h1>
+    {% for item in category.items %}
+    <a href="{{url_for('displayItems', category_id=item.category_id, item_id=item.id)}}"><h1>{{item.name}}</h1></a>
+    {{item.description}}
+{% endfor %}
+{% else %}
+Empty category
+{% endif %}
+ </div>
+{% endblock content %}
